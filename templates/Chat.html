@@ -1,0 +1,300 @@
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Resume Builder</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="../static/assets/img/favicon.png" rel="icon">
+  <link href="../static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="../static/assets/css/main.css" rel="stylesheet">
+
+      <!-- Main CSS File -->
+  <link href="../static/assets/css/main.css" rel="stylesheet">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+       <style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+    }
+
+    #chatbox-container {
+        max-width: 900px;
+        margin: 60px auto;
+        background-color: #fff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    #chatbox {
+        padding: 20px;
+        max-height: 500px;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+    }
+
+    #userInput {
+        padding: 15px;
+        border-top: 1px solid #ddd;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background-color: #f9f9f9;
+    }
+
+    #textInput {
+        flex: 1;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        padding: 10px 15px;
+        font-size: 16px;
+        outline: none;
+    }
+
+    #textInput:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+    }
+
+    button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        padding: 10px 15px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    .userText, .botText {
+        margin: 10px 0;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .userText {
+        justify-content: flex-end;
+    }
+
+    .botText {
+        justify-content: flex-start;
+    }
+
+    .userText span, .botText span {
+        max-width: 70%;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .userText span {
+        background-color: #007bff;
+        color: white;
+        text-align: left;
+    }
+
+    .botText span {
+        background-color: #f1f1f1;
+        color: black;
+        text-align: left;
+    }
+</style>
+
+
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="../static/assets/img/logo.png" alt=""> -->
+        <h1 class="sitename">Resume Builder</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+         {% include 'menu/User.html'  %}
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+
+
+    </div>
+  </header>
+
+  <main class="main">
+
+
+
+    <!-- Call To Action Section -->
+    <section id="call-to-action" class="call-to-action section dark-background">
+
+      <img src="../static/assets/img/cta-bg.jpg" alt="">
+
+      <div class="container">
+
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-xl-9 text-center text-xl-start">
+          </div>
+          <div class="col-xl-3 cta-btn-container text-center">
+            <a class="cta-btn align-middle" href="#">Call To Action</a>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Call To Action Section -->
+
+      {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <script>
+      var messages = {{ messages | safe }};
+      for (var i=0; i<messages.length; i++) {
+        alert(messages[i]);
+      }
+    </script>
+  {% endif %}
+{% endwith %}
+    <!-- Portfolio Section -->
+
+    <!-- Contact Section -->
+
+<section class="w3l-contact-info-main" id="contact"  align="center" data-image-src="static/assets/images/1.jpg">
+    <div class="contact-sec	editContent"  align="center" >
+        <div class="container"  style="background: url(../images/4.jpg) no-repeat center;" >
+    <!--<div class="map-content-9 mb-5 " align="center" style=" background-image: url(static/assets/images/4.jpg)" >-->
+        <div class="map-content-9 mb-5 " align="center"  >
+		 <h3 class="header-name">  AI ChatBot..!</h3>
+
+
+<div class="header-name" style="width:500px; padding:10px;"  >
+
+</div>
+
+            <div id="chatbox-container">
+    <div id="chatbox">
+        <p class="botText">
+            <span>Hi! I'm your AI-Generative Chatbot</span>
+        </p>
+    </div>
+    <div id="userInput">
+        <input id="textInput" type="text" name="msg" placeholder="Type your message..." />
+        <button onclick="getBotResponse()">Send</button>
+    </div>
+</div>
+
+
+
+<script>
+    function getBotResponse() {
+        var rawText = $("#textInput").val();
+        if (!rawText.trim()) return; // Prevent empty messages
+        var userHtml = '<p class="userText"><span>' + rawText + "</span></p>";
+        $("#textInput").val("");
+        $("#chatbox").append(userHtml);
+
+        $.get("/get1", { msg: rawText }).done(function (data) {
+           var botHtml = '<pre class="botText" style="white-space: pre-wrap; word-wrap: break-word; overflow-wrap: break-word; color : black; text-align: left; max-width: 900px; background-color: #f9f9f9; padding: 10px; border-radius: 10px; line-height: 1.6; font-size: 16px;">' + data + "</pre>";
+$("#chatbox").append(botHtml);
+document.getElementById("chatbox").scrollTop = document.getElementById("chatbox").scrollHeight;
+        });
+    }
+
+    $("#textInput").keypress(function (e) {
+        if (e.which == 13) {
+            getBotResponse();
+        }
+    });
+</script>
+
+
+
+
+            <div class="header-name">
+
+
+
+
+
+            </div>
+
+    </div>
+
+
+
+        </div>
+    </div>
+</section>
+
+  </main>
+
+    <footer id="footer" class="footer">
+
+
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">DARD</strong> <span>All Rights Reserved</span></p>
+      <div class="credits">
+
+        Designed by <a href="#">BootstrapMade</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="../static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/assets/vendor/php-email-form/validate.js"></script>
+  <script src="../static/assets/vendor/aos/aos.js"></script>
+  <script src="../static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../static/assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../static/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="../static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="../static/assets/js/main.js"></script>
+
+</body>
+
+</html>
