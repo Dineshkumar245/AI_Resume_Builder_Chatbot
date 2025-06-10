@@ -137,7 +137,7 @@ def Chat():
 
 import google.generativeai as genai
 
-genai.configure(api_key='AIzaSyClK2fN-1M0eY-zcKQqXsfX85RVBYGSFfo')
+genai.configure(api_key='Enter Your api key in this place')#Enter Your api key here
 
 
 def get_completion(out):
