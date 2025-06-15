@@ -29,7 +29,3 @@ An AI-powered web application that allows users to upload resumes, automatically
 | AI Chatbot     | Gemini API (ChatGPT-style)|
 | File Handling  | PDFMiner, python-docx     |
 
----
-
-## 📂 Project Structure
-
